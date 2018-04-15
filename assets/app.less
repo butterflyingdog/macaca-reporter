@@ -169,7 +169,6 @@ body {
     }
   }
 
-
   .ant-layout-header {
     height: 230px;
     ul.head {
@@ -275,5 +274,43 @@ body {
   .file-head ul li:nth-child(5),
   .file-head ul li:nth-child(6) {
     display: none;
+  }
+}
+
+.panel-container {
+  width: 1280px;
+  margin: 0 auto;
+  position: fixed;
+  top: 110px;
+  right: 10px;
+  z-index: 99999;
+}
+
+.case-show-panel {
+  float: right;
+  opacity: 0.6;
+  transition: opacity 0.5s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  .case-show-radio {
+    float: right;
+  }
+}
+
+.picture-item {
+  padding: 2px;
+}
+
+.ant-card-body {
+  padding: 2px !important;
+
+  .ant-card-meta-description {
+    font-size: 12px !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "macaca-reporter",
-  "version": "1.0.52",
+  "version": "1.1.0",
   "description": "macaca reporter",
   "keywords": [
     "macaca",
@@ -12,7 +12,6 @@
     "url": "git://github.com/macacajs/macaca-reporter.git"
   },
   "dependencies": {
-    "chalk": "^2.1.0",
     "json-stringify-safe": "^5.0.1",
     "macaca-utils": "^1.0.0",
     "microtemplate": "^1.0.2",
@@ -37,6 +36,7 @@
     "eslint-plugin-mocha": "^4.11.0",
     "eslint-plugin-react": "^7.2.1",
     "extract-text-webpack-plugin": "^3.0.0",
+    "git-contributor": "^1.0.3",
     "json-loader": "^0.5.7",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
@@ -55,14 +55,15 @@
   },
   "scripts": {
     "dev": "webpack-dev-server",
-    "dev:test": "NODE_ENV=test webpack-dev-server",
+    "dev:test": "NODE_ENV=test npm run dev",
     "build": "cross-env NODE_ENV=production webpack -p",
-    "lint": "eslint --fix assets test",
+    "lint": "eslint --ext js,jsx --fix assets test",
     "prepublish": "npm run build",
     "serve": "npm run dev:test &",
     "test": "macaca run -d ./test --reporter macaca-reporter",
-    "ci": "npm run lint && npm run serve && npm run test"
+    "ci": "npm run lint && npm run serve && npm run test",
+    "contributor": "git-contributor"
   },
-  "homepage": "https://macacajs.github.io/pageuitest",
+  "homepage": "https://macacajs.github.io",
   "license": "MIT"
 }

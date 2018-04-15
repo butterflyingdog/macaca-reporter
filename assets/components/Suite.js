@@ -7,8 +7,7 @@ import {
 
 import {
   Table,
-  Icon,
-  Progress
+  Icon
 } from 'antd';
 
 import _ from '../common/helper';
@@ -158,12 +157,19 @@ export default class Suite extends React.Component {
         suite.tests.forEach(test => {
           test.key = this._guid();
           test.state = this.getCaseState(test);
-          test.duration += 'ms';
+          test.duration = `${test.duration}ms`;
 
           if (!test.pass) {
             failKeys.push(test.key);
           }
           allTest.push(test);
+
+          if (test.context && !_.find(images, item => item.src.replace(/"/g, '') === test.context.replace(/"/g, ''))) {
+            images.push({
+              src: test.context.replace(/"/g, ''),
+              text: test.title,
+            });
+          }
         });
         allStats.totalFailures += suite.totalFailures;
         allStats.totalPasses += suite.totalPasses;
@@ -202,7 +208,7 @@ export default class Suite extends React.Component {
     }
 
     return (
-      <div className="suite">
+      <div className="suite" style={{ display: this.props.showSuite ? 'block' : 'none' }}>
         <div className="file-head">
           <div className="file-head-top">
             <h1>{ allStats.title }</h1>
@@ -222,7 +228,7 @@ export default class Suite extends React.Component {
           </ul>
         </div>
 
-        <div className={ `ani-box d3-tree-${this.uid}` }></div>
+        <div style={{ display: this.props.showSvg ? 'block' : 'none' }} className={ `ani-box d3-tree-${this.uid}` }></div>
         <Table
           columns={ columns }
           defaultExpandedRowKeys={ failKeys }
