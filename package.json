@@ -1,25 +1,34 @@
 {
   "name": "macaca-reporter",
-  "version": "1.1.0",
-  "description": "macaca reporter",
+  "version": "1.2.10",
+  "description": "reporter for Macaca",
   "keywords": [
     "macaca",
-    "reporter"
+    "reporter",
+    "coverage"
+  ],
+  "files": [
+    "dist/*.js",
+    "dist/*.css",
+    "lib/**/*.js",
+    "lib/*.html"
   ],
   "main": "lib/macaca-reporter.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/macacajs/macaca-reporter.git"
+    "url": "git@github.com:macacajs/macaca-reporter.git"
   },
   "dependencies": {
     "json-stringify-safe": "^5.0.1",
+    "macaca-coverage": "^1.0.3",
     "macaca-utils": "^1.0.0",
     "microtemplate": "^1.0.2",
     "mocha": "^4.0.1",
+    "remap-istanbul": "^0.11.0",
     "xlogger": "^1.0.6"
   },
   "devDependencies": {
-    "antd": "^3.0.1",
+    "antd": "^3.6.1",
     "babel-core": "^6.25.0",
     "babel-eslint": "^8.0.1",
     "babel-loader": "^7.0.0",
@@ -35,32 +44,33 @@
     "eslint": "^4.5.0",
     "eslint-plugin-mocha": "^4.11.0",
     "eslint-plugin-react": "^7.2.1",
-    "extract-text-webpack-plugin": "^3.0.0",
-    "git-contributor": "^1.0.3",
+    "git-contributor": "1",
     "json-loader": "^0.5.7",
     "less": "^2.7.2",
-    "less-loader": "^4.0.5",
+    "less-loader": "^4.1.0",
     "lodash": "^4.17.4",
-    "macaca-cli": "^2.0.12",
-    "macaca-electron": "^1.1.17",
-    "macaca-wd": "^1.0.18",
+    "macaca-cli": "2",
+    "macaca-electron": "2",
+    "macaca-wd": "2",
+    "mini-css-extract-plugin": "^0.4.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-syntax-highlighter": "^5.6.3",
     "socket.io": "^2.0.3",
     "style-loader": "^0.18.2",
-    "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.9.7",
-    "xutil": "^1.0.9"
+    "webpack": "^4.10.0",
+    "webpack-cli": "^3.0.1",
+    "webpack-dev-server": "^3.1.4",
+    "xutil": "1"
   },
   "scripts": {
-    "dev": "webpack-dev-server",
+    "dev": "webpack-dev-server --mode=development",
     "dev:test": "NODE_ENV=test npm run dev",
     "build": "cross-env NODE_ENV=production webpack -p",
     "lint": "eslint --ext js,jsx --fix assets test",
     "prepublish": "npm run build",
     "serve": "npm run dev:test &",
-    "test": "macaca run -d ./test --reporter macaca-reporter",
+    "test": "macaca run -d ./test",
     "ci": "npm run lint && npm run serve && npm run test",
     "contributor": "git-contributor"
   },
